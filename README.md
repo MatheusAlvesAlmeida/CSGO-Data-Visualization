@@ -9,10 +9,10 @@ Projeto realizado para a disciplina de Tópicos Avançados em Interfaces, minist
 O jogo possui vários modos diferentes para os jogadores, dentre eles um chamado Competitivo, que é o modo mais tradicional. Nele, cada partida possui 30 rounds no máximo e quem vencer 16 rounds primeiro ganha. Caso os dois times vençam 15 cada, a partida acaba em empate.
 
 ### Objetivo
-Com isso, o objetivo desse projeto é analisar a performance de jogadores do modo competitivo do jogo CS:GO através da visualização de dados. Os dados foram coletados do site [Kaggle](https://www.kaggle.com/datasets/skihikingkevin/csgo-matchmaking-damage) na data de 16/04/2022. Com esses dados, buscamos responder dentre várias, algumas perguntas como:
+Com isso, o objetivo desse projeto é analisar a performance de jogadores do modo competitivo do jogo CS:GO através da visualização de dados. Os dados foram coletados do site [Kaggle](https://www.kaggle.com/datasets/skihikingkevin/csgo-matchmaking-damage) na data de 16/04/2022. Com esses dados buscamos responder, dentre várias, algumas perguntas como:
 - Como eu posso melhorar meu posicionamento nos lados do mapa (T, CT)?
 - Qual o lado mais favorável em cada mapa?
-- Qual é a melhor posição para o meu estilo de jogo?
+- Em que posição posso impactar o jogo mais efetitvamente?
 
 ### Autores
 [Matheus Alves Almeida](https://github.com/MatheusAlvesAlmeida),
