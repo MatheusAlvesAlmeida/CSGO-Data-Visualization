@@ -20,14 +20,20 @@
             <button type="button" class="btn btn-primary" onclick="changeMap('de_mirage')">Mirage</button>
             <button type="button" class="btn btn-primary" onclick="changeMap('de_cache')">Cache</button>
         </div>
+        <div class="compare">
+            <button type="button" class="btn btn-primary" onclick="compare()">Colocar ao lado</button>
+        </div>
         <div class="filters">
             <h3>Available filters</h3>
             
         </div>
     </div>
     <div class="current-map">
-        <div class="card-body">
-            <img id = "mapImage" src="" alt="">
+        <div id = "compare-left-side" class="card-body-left" style="max-height:450px; max-width:450px; overflow: hidden">
+            <img id = "mapImage" src="" alt="" >
+        </div>
+        <div id = "compare-right-side" class="card-body-right">
+            
         </div>
     </div>
 </body>

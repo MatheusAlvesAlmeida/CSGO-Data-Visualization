@@ -11,3 +11,7 @@ function changeMap(map){
         document.getElementById("mapImage").src = mirageSrc;
     }
 }
+
+function compare(){
+    document.getElementById("compare-right-side") = document.getElementById("compare-left-side");
+}
