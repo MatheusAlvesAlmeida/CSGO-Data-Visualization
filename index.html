@@ -1,41 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/main.css">
+<html>
+  <head>
+    <title>CSGO Data Viz</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://www.w3schools.com/lib/w3-theme-black.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+    />
     <script src="./backend/main.js"></script>
-    <title>CS:GO Data Viz</title>
-</head>
+  </head>
+  <body>
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+      <div class="w3-center">
+        <h4>
+          Melhorando as habilidades no CS:GO através da visualização de dados
+        </h4>
+        <div class="w3-third">
+          <h4>Filtros</h4>
+          <div class="w3-card w3-container" style="min-height: 150px"></div>
+        </div>
+        <div class="w3-third">
+          <div class="w3-card w3-container" style="min-height: 150px">
+            <button class="w3-btn w3-dark-grey w3-hover-light-grey">
+              Informações gerais
+            </button>
+            <button class="w3-btn w3-dark-grey w3-hover-light-grey">
+              Resetar tudo
+            </button>
+            <button class="w3-btn w3-dark-grey w3-hover-light-grey">
+              Sobre a equipe
+            </button>
+          </div>
+        </div>
+        <div class="w3-third">
+          <h4>Selecionar mapa</h4>
+          <div class="w3-card w3-container" style="min-height: 150px">
+            <button
+              type="button"
+              class="w3-btn w3-dark-grey w3-hover-light-grey"
+              onclick="changeMap('de_inferno')"
+            >
+              Inferno
+            </button></br>
+            <button
+              type="button"
+              class="w3-btn w3-dark-grey w3-hover-light-grey"
+              onclick="changeMap('de_mirage')"
+            >
+              Mirage
+            </button></br>
+            <button
+              type="button"
+              class="w3-btn w3-dark-grey w3-hover-light-grey"
+              onclick="changeMap('de_cache')"
+            >
+              Cache
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
 
-<body>
-    <div class="side-menu">
-        <div class="change-map">
-            <h3>Select map</h3>
-            <button type="button" class="btn btn-primary" onclick="changeMap('de_inferno')">Inferno</button>
-            <button type="button" class="btn btn-primary" onclick="changeMap('de_mirage')">Mirage</button>
-            <button type="button" class="btn btn-primary" onclick="changeMap('de_cache')">Cache</button>
-        </div>
-        <div class="compare">
-            <button type="button" class="btn btn-primary" onclick="compare()">Colocar ao lado</button>
-        </div>
-        <div class="filters">
-            <h3>Available filters</h3>
-            
-        </div>
-    </div>
-    <div class="current-map">
-        <div id = "compare-left-side" class="card-body-left" style="max-height:450px; max-width:450px; overflow: hidden">
+    <div class="w3-row-padding w3-center w3-margin-top">
+      <div class="w3-half">
+        <div id="left-mapcard" class="w3-card w3-container" style="min-height: 460px">
             <img id = "mapImage" src="" alt="" >
         </div>
-        <div id = "compare-right-side" class="card-body-right">
-            
-        </div>
-    </div>
-</body>
+      </div>
 
+      <div class="w3-half">
+        <div id="right-mapcard" class="w3-card w3-container" style="min-height: 460px">
+            <img id = "mapImage" src="" alt="" >
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
