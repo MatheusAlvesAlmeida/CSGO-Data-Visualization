@@ -5,8 +5,8 @@ export function getMapData(mapName) {
     var sampleSVG = d3
       .select("#left-mapcard")
       .append("svg")
-      .attr("width", 1024)
-      .attr("height", 1024);
+      .attr("width", 450)
+      .attr("height", 450);
 
     for (let index = 0; index < data.length; index++) {
       sampleSVG
@@ -22,14 +22,14 @@ export function getMapData(mapName) {
 
 function CalculatePointToResolutionX(x) {
   x += 2031;
-  x = Math.floor((x / 3752) * 1024);
+  x = Math.floor((x / 3752) * 450);
   console.log(x);
   return x;
 }
 function CalculatePointToResolutionY(y) {
   y += 2240;
-  y = Math.floor((y / 3187) * 1024);
-  y = (y - 1024) * -1;
+  y = Math.floor((y / 3187) * 450);
+  y = (y - 450) * -1;
   console.log(y);
   return y;
 }
