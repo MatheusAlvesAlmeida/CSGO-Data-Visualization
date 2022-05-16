@@ -12,8 +12,8 @@ function changeMap(map){
     if(map == "de_inferno"){
         document.getElementById("mapImage").src = infernoSrc;
     }else if(map == "de_cache"){
-        document.getElementById("left-mapcard").style.backgroundImage = "url('./../assets/maps/de_cache.png')";
-        getMapData('de_cache')
+        document.getElementById("left-mapcard").style.backgroundImage = "url('./../assets/maps/de_cache_1024.png')";
+        getMapData('cache_data')
     }else{
         document.getElementById("mapImage").src = mirageSrc;
     }
