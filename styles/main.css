@@ -1,25 +1,77 @@
-.card-body-left {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    float:left;
-    width:50%;
-    height:500px;
-}
-
-.card-body-right {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    float:right;
-    width:50%;
-    height:500px;
+.external-container {
+	display: flex;
+	height: 100vh;
 }
 
 .side-menu {
-    max-width: 20%;
+	height: 100vh;
+	width: 30vw;
+}
+
+.main {
+	width: 100vw;
+	height: 100vh;
+}
+.card-body-left {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	float: left;
+	width: 50%;
+	height: 500px;
+}
+
+.card-body-right {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	float: right;
+	width: 50%;
+	height: 500px;
+}
+
+.side-menu {
+	max-width: 20%;
 }
 
 .current-map {
-    margin-top: 0;
-    margin-left: 20%;
-    max-width: 75%;
+	margin-top: 0;
+	margin-left: 20%;
+	max-width: 75%;
+}
+
+.title {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	margin: 1rem 0;
+}
+
+.options-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.filters {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 1rem 0;
+	width: 50%;
+}
+
+.maps {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 1rem 0;
+	width: 50%;
+}
+
+.filter-btn {
+	margin-bottom: 1rem;
+	min-width: 200px;
 }
