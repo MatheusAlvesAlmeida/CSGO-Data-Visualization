@@ -9,6 +9,7 @@ import {
 import { kMeans } from "./clustering.js";
 
 const loading = document.getElementsByClassName("loader");
+const externalContainer = document.getElementsByClassName("external-container");
 
 export function drawDeathCircles(mapName, filterCT, filterTR) {
   const dataSrc = "./../data/" + mapName + "_data_filtered.csv";
@@ -66,6 +67,8 @@ export function drawDeathCircles(mapName, filterCT, filterTR) {
       drawClusters(clusters, sampleSVG);
     }
     loading[0].style.display = "none";
+    externalContainer[0].style.pointerEvents = "inherit";
+    externalContainer[0].style.opacity = "inherit";
   });
   
 }

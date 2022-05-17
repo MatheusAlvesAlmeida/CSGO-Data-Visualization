@@ -7,10 +7,13 @@ const mirageSrc = "./../assets/maps/de_mirage.png";
 const leftMapcard = document.getElementById("left-mapcard");
 
 const loading = document.getElementsByClassName("loader");
+const externalContainer = document.getElementsByClassName("external-container");
 
 const cacheButton = document.getElementById("cache-button");
 cacheButton.addEventListener("click", async () => {
   loading[0].style.display = "inherit";
+  externalContainer[0].style.pointerEvents = "none";
+  externalContainer[0].style.opacity = "0.5";
   console.log("cache");
   leftMapcard.style.backgroundImage = "url('./../assets/maps/de_cache.png')";
   await draw('de_cache')
@@ -20,6 +23,8 @@ cacheButton.addEventListener("click", async () => {
 const infernoButtondocument = document.getElementById("inferno-button");
 infernoButtondocument.addEventListener("click", async () => {
   loading[0].style.display = "inherit";
+  externalContainer[0].style.pointerEvents = "none";
+  externalContainer[0].style.opacity = "0.5";
   console.log("inferno");
   leftMapcard.style.backgroundImage = "url('./../assets/maps/de_inferno.png')";
   await draw('de_inferno')
@@ -28,6 +33,8 @@ infernoButtondocument.addEventListener("click", async () => {
 const mirageButtondocument = document.getElementById("mirage-button");
 infernoButtondocument.addEventListener("click", async () => {
   loading[0].style.display = "inherit";
+  externalContainer[0].style.pointerEvents = "none";
+  externalContainer[0].style.opacity = "0.5";
   console.log("mirage");
   leftMapcard.style.backgroundImage = "url('./../assets/maps/de_mirage.png')";
   await draw("de_mirage");
