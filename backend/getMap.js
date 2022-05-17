@@ -11,7 +11,7 @@ import { kMeans } from "./clustering.js";
 const loading = document.getElementsByClassName("loader");
 const externalContainer = document.getElementsByClassName("external-container");
 
-export function drawDeathCircles(mapName, filterCT, filterTR) {
+export function drawDeathCircles(mapName) {
   const dataSrc = "./../data/" + mapName + "_data_filtered.csv";
   d3.csv(dataSrc, function (data) {
     d3.select("svg").remove();
@@ -24,24 +24,13 @@ export function drawDeathCircles(mapName, filterCT, filterTR) {
     if (mapName == "de_cache") {
       const pos = [];
       for (let i = 0; i < data.length; i++) {
-        if (filterCT && data[i].vic_side == "CounterTerrorist") {
-          pos[i] = [
-            CalculatePointToResolutionXCache(data[i].vic_pos_x),
-            CalculatePointToResolutionYCache(data[i].vic_pos_y),
-          ];
-        } else if (filterTR && data[i].vic_side == "Terrorist") {
-          pos[i] = [
-            CalculatePointToResolutionXCache(data[i].vic_pos_x),
-            CalculatePointToResolutionYCache(data[i].vic_pos_y),
-          ];
-        } else if (filterTR == false && filterCT == false) {
-          pos[i] = [
-            CalculatePointToResolutionXCache(data[i].vic_pos_x),
-            CalculatePointToResolutionYCache(data[i].vic_pos_y),
-          ];
-        }
+        pos[i] = [
+          CalculatePointToResolutionXCache(data[i].vic_pos_x),
+          CalculatePointToResolutionYCache(data[i].vic_pos_y),
+        ];
       }
-      const clusters = kMeans(pos, 35);
+      const clusters = kMeans(pos, 50);
+
       drawClusters(clusters, sampleSVG);
     } else if (mapName == "de_inferno") {
       const pos = [];
@@ -92,7 +81,7 @@ function normalizeClusterArray(arr) {
 
 function drawClusters(clusters, sampleSVG) {
   const normalizedArray = normalizeClusterArray(clusters.classes);
-
+  console.log(normalizedArray);
   for (let i = 0; i < clusters.centroids.length; i++) {
     sampleSVG
       .append("circle")

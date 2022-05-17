@@ -1,8 +1,13 @@
-import { drawDeathCircles } from "./getMap.js";
+import {
+  getSVGNormal,
+  getSVGA,
+  getSVGB,
+  getSVGC,
+  getSVGCT,
+  getSVGTR,
+} from "./filters.js";
 
-const infernoSrc = "./../assets/maps/de_inferno.png";
-const cacheSrc = "./../assets/maps/de_cache.png";
-const mirageSrc = "./../assets/maps/de_mirage.png";
+var currentMap = "";
 
 const leftMapcard = document.getElementById("left-mapcard");
 
@@ -15,6 +20,7 @@ cacheButton.addEventListener("click", async () => {
   externalContainer[0].style.pointerEvents = "none";
   externalContainer[0].style.opacity = "0.5";
   leftMapcard.style.backgroundImage = "url('./../assets/maps/de_cache.png')";
+  currentMap = "de_cache";
   await draw("de_cache");
 });
 
@@ -24,6 +30,7 @@ infernoButtondocument.addEventListener("click", async () => {
   externalContainer[0].style.pointerEvents = "none";
   externalContainer[0].style.opacity = "0.5";
   leftMapcard.style.backgroundImage = "url('./../assets/maps/de_inferno.png')";
+  currentMap = "de_inferno";
   await draw("de_inferno");
 });
 
@@ -33,11 +40,80 @@ mirageButtondocument.addEventListener("click", async () => {
   externalContainer[0].style.pointerEvents = "none";
   externalContainer[0].style.opacity = "0.5";
   leftMapcard.style.backgroundImage = "url('./../assets/maps/de_mirage.png')";
+  currentMap = "de_mirage";
   await draw("de_mirage");
 });
 
+const rankAButton = document.getElementById("rank-a-button");
+rankAButton.addEventListener("click", async () => {
+  loading[0].style.display = "inherit";
+  externalContainer[0].style.pointerEvents = "none";
+  externalContainer[0].style.opacity = "0.5";
+  leftMapcard.style.backgroundImage =
+    "url('./../assets/maps/" + currentMap + ".png')";
+  await getByRankA(currentMap);
+});
+
+const rankBButton = document.getElementById("rank-b-button");
+rankBButton.addEventListener("click", async () => {
+  loading[0].style.display = "inherit";
+  externalContainer[0].style.pointerEvents = "none";
+  externalContainer[0].style.opacity = "0.5";
+  leftMapcard.style.backgroundImage =
+    "url('./../assets/maps/" + currentMap + ".png')";
+  await getByRankB(currentMap);
+});
+
+const rankCButton = document.getElementById("rank-c-button");
+rankCButton.addEventListener("click", async () => {
+  loading[0].style.display = "inherit";
+  externalContainer[0].style.pointerEvents = "none";
+  externalContainer[0].style.opacity = "0.5";
+  leftMapcard.style.backgroundImage =
+    "url('./../assets/maps/" + currentMap + ".png')";
+  await getByRankC(currentMap);
+});
+
+const teamCTButton = document.getElementById("team-ct-button");
+teamCTButton.addEventListener("click", async () => {
+  loading[0].style.display = "inherit";
+  externalContainer[0].style.pointerEvents = "none";
+  externalContainer[0].style.opacity = "0.5";
+  leftMapcard.style.backgroundImage =
+    "url('./../assets/maps/" + currentMap + ".png')";
+  await getByCT(currentMap);
+});
+
+const teamTRButton = document.getElementById("team-tr-button");
+teamTRButton.addEventListener("click", async () => {
+  loading[0].style.display = "inherit";
+  externalContainer[0].style.pointerEvents = "none";
+  externalContainer[0].style.opacity = "0.5";
+  leftMapcard.style.backgroundImage =
+    "url('./../assets/maps/" + currentMap + ".png')";
+  await getByTR(currentMap);
+});
+
 async function draw(map) {
-  const filterCT = false;
-  const filterTR = false;
-  await drawDeathCircles(map, filterCT, filterTR);
+  await getSVGNormal(map);
+}
+
+async function getByRankA(map) {
+  await getSVGA(map);
+}
+
+async function getByRankB(map) {
+  await getSVGB(map);
+}
+
+async function getByRankC(map) {
+  await getSVGC(map);
+}
+
+async function getByCT(map) {
+  await getSVGCT(map);
+}
+
+async function getByTR(map) {
+  await getSVGTR(map);
 }

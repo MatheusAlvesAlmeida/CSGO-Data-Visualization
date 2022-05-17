@@ -32,20 +32,24 @@
                   >
                 </div>
                 <div class="flex">
+                  <p>(selecione primeiro o mapa)</p>
                   <h5>Filtrar por rank</h5>
                   <div>
                     <button
                       class="w3-button w3-tiny w3-dark-grey w3-hover-light-grey"
+                      id="rank-a-button"
                     >
                       A
                     </button>
                     <button
                       class="w3-button w3-tiny w3-dark-grey w3-hover-light-grey"
+                      id="rank-b-button"
                     >
                       B
                     </button>
                     <button
                       class="w3-button w3-tiny w3-dark-grey w3-hover-light-grey"
+                      id="rank-c-button"
                     >
                       C
                     </button>
@@ -56,11 +60,13 @@
                 <h5>Filtrar por time</h5>
                 <button
                   class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
+                  id="team-ct-button"
                 >
                   Somente CT
                 </button>
                 <button
                   class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
+                  id="team-tr-button"
                 >
                   Somente TR
                 </button>
@@ -96,17 +102,13 @@
               <button
                 class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
               >
-                Informações gerais
+              <a href="./view/generalViews.html">Informações gerais</a>
               </button>
               <button
                 class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
+                onClick="window.location.reload()"
               >
                 Resetar tudo
-              </button>
-              <button
-                class="w3-btn w3-dark-grey w3-hover-light-grey filter-btn"
-              >
-                Sobre a equipe
               </button>
             </div>
           </div>
@@ -115,16 +117,26 @@
 
       <div class="main">
         <div class="title">
-          <h3 style="font-weight: 700">
-            Melhore suas habilidades no CS:GO através da visualização de dados
-          </h3>
+            <div>
+              <h3 style="font-weight: 700">
+                Melhore suas habilidades no CS:GO através da visualização de dados
+              </h3>
+              <div style="display: flex">
+                <span class="dot"></span>
+                <p>
+                  Os círculos representam os locais onde houve aglomeração de
+                  mortes
+                </p>
+              </div>
+            </div>
         </div>
-        <div class="main-container">
-          <div
-            id="left-mapcard"
-            class="w3-card w3-container"
-            style="max-height: 450px; max-width: 450px"
-          ></div>
+          <div class="main-container">
+            <div
+              id="left-mapcard"
+              class="w3-card w3-container"
+              style="max-height: 450px; max-width: 450px"
+            ></div>
+          </div>
         </div>
       </div>
     </div>
