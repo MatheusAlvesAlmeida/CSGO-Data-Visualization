@@ -6,6 +6,7 @@ import {
   CalculatePointToResolutionYInferno,
   CalculatePointToResolutionYMirage,
 } from "./convertCoordinates.js";
+import { kMeans } from "./clustering.js";
 
 export function drawDeathCircles(mapName) {
   const dataSrc = "./../data/" + mapName + "_data_filtered.csv";
@@ -18,38 +19,69 @@ export function drawDeathCircles(mapName) {
       .attr("height", 450);
 
     if (mapName == "de_cache") {
-      for (let index = 0; index < data.length; index++) {
-        sampleSVG
-          .append("circle")
-          .style("stroke", "gray")
-          .style("fill", "red")
-          .attr("r", 3)
-          .attr("cx", CalculatePointToResolutionXCache(data[index].vic_pos_x))
-          .attr("cy", CalculatePointToResolutionYCache(data[index].vic_pos_y));
+      const pos = [];
+      for (let i = 0; i < data.length; i++) {
+        pos[i] = [
+          CalculatePointToResolutionXCache(data[i].vic_pos_x),
+          CalculatePointToResolutionYCache(data[i].vic_pos_y),
+        ];
       }
+      const clusters = kMeans(pos, 35);
+      drawClusters(clusters, sampleSVG);
     } else if (mapName == "de_inferno") {
-      for (let index = 0; index < data.length; index++) {
-        sampleSVG
-          .append("circle")
-          .style("stroke", "gray")
-          .style("fill", "red")
-          .attr("r", 3)
-          .attr("cx", CalculatePointToResolutionXInferno(data[index].vic_pos_x))
-          .attr(
-            "cy",
-            CalculatePointToResolutionYInferno(data[index].vic_pos_y)
-          );
+      const pos = [];
+      for (let i = 0; i < data.length; i++) {
+        pos[i] = [
+          CalculatePointToResolutionXInferno(data[i].vic_pos_x),
+          CalculatePointToResolutionYInferno(data[i].vic_pos_y),
+        ];
       }
+      const clusters = kMeans(pos, 35);
+
+      drawClusters(clusters, sampleSVG);
     } else {
-      for (let index = 0; index < data.length; index++) {
-        sampleSVG
-          .append("circle")
-          .style("stroke", "gray")
-          .style("fill", "red")
-          .attr("r", 3)
-          .attr("cx", CalculatePointToResolutionXMirage(data[index].vic_pos_x))
-          .attr("cy", CalculatePointToResolutionYMirage(data[index].vic_pos_y));
+      const pos = [];
+      for (let i = 0; i < data.length; i++) {
+        pos[i] = [
+          CalculatePointToResolutionXMirage(data[i].vic_pos_x),
+          CalculatePointToResolutionYMirage(data[i].vic_pos_y),
+        ];
       }
+      const clusters = kMeans(pos, 35);
+
+      drawClusters(clusters, sampleSVG);
     }
   });
+}
+
+function normalizeClusterArray(arr) {
+  const count = [];
+  const normalizedVector = [];
+
+  arr.forEach((element) => {
+    count[element] = (count[element] || 0) + 1;
+  });
+
+  const max = Math.max(...count);
+  const min = Math.min(...count);
+
+  for (let i = 0; i < count.length; i++) {
+    normalizedVector[i] = (count[i] - min) / (max - min);
+  }
+
+  return normalizedVector;
+}
+
+function drawClusters(clusters, sampleSVG) {
+  const normalizedArray = normalizeClusterArray(clusters.classes);
+
+  for (let i = 0; i < clusters.centroids.length; i++) {
+    sampleSVG
+      .append("circle")
+      .style("stroke", "gray")
+      .style("fill", "red")
+      .attr("cx", clusters.centroids[i][0])
+      .attr("cy", clusters.centroids[i][1])
+      .attr("r", normalizedArray[i] * 15);
+  }
 }
