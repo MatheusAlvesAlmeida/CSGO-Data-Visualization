@@ -1,5 +1,14 @@
-export function getMapData(mapName) {
-  const dataSrc = "./../data/" + mapName + "_filtered.csv";
+import {
+  CalculatePointToResolutionXCache,
+  CalculatePointToResolutionXInferno,
+  CalculatePointToResolutionXMirage,
+  CalculatePointToResolutionYCache,
+  CalculatePointToResolutionYInferno,
+  CalculatePointToResolutionYMirage,
+} from "./convertCoordinates.js";
+
+export function drawDeathCircles(mapName) {
+  const dataSrc = "./../data/" + mapName + "_data_filtered.csv";
 
   d3.csv(dataSrc, function (data) {
     var sampleSVG = d3
@@ -8,28 +17,39 @@ export function getMapData(mapName) {
       .attr("width", 450)
       .attr("height", 450);
 
-    for (let index = 0; index < data.length; index++) {
-      sampleSVG
-        .append("circle")
-        .style("stroke", "gray")
-        .style("fill", "red")
-        .attr("r", 3)
-        .attr("cx", CalculatePointToResolutionX(data[index].vic_pos_x))
-        .attr("cy", CalculatePointToResolutionY(data[index].vic_pos_y));
+    if (mapName == "de_cache") {
+      for (let index = 0; index < data.length; index++) {
+        sampleSVG
+          .append("circle")
+          .style("stroke", "gray")
+          .style("fill", "red")
+          .attr("r", 3)
+          .attr("cx", CalculatePointToResolutionXCache(data[index].vic_pos_x))
+          .attr("cy", CalculatePointToResolutionYCache(data[index].vic_pos_y));
+      }
+    } else if (mapName == "de_inferno") {
+      for (let index = 0; index < data.length; index++) {
+        sampleSVG
+          .append("circle")
+          .style("stroke", "gray")
+          .style("fill", "red")
+          .attr("r", 3)
+          .attr("cx", CalculatePointToResolutionXInferno(data[index].vic_pos_x))
+          .attr(
+            "cy",
+            CalculatePointToResolutionYInferno(data[index].vic_pos_y)
+          );
+      }
+    } else {
+      for (let index = 0; index < data.length; index++) {
+        sampleSVG
+          .append("circle")
+          .style("stroke", "gray")
+          .style("fill", "red")
+          .attr("r", 3)
+          .attr("cx", CalculatePointToResolutionXMirage(data[index].vic_pos_x))
+          .attr("cy", CalculatePointToResolutionYMirage(data[index].vic_pos_y));
+      }
     }
   });
-}
-
-function CalculatePointToResolutionX(x) {
-  x += 2031;
-  x = Math.floor((x / 3752) * 450);
-  console.log(x);
-  return x;
-}
-function CalculatePointToResolutionY(y) {
-  y += 2240;
-  y = Math.floor((y / 3187) * 450);
-  y = (y - 450) * -1;
-  console.log(y);
-  return y;
 }
