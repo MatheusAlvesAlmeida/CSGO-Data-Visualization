@@ -8,9 +8,10 @@ import {
 } from "./convertCoordinates.js";
 import { kMeans } from "./clustering.js";
 
-export function drawDeathCircles(mapName) {
-  const dataSrc = "./../data/" + mapName + "_data_filtered.csv";
+const loading = document.getElementsByClassName("loader");
 
+export function drawDeathCircles(mapName, filterCT, filterTR) {
+  const dataSrc = "./../data/" + mapName + "_data_filtered.csv";
   d3.csv(dataSrc, function (data) {
     var sampleSVG = d3
       .select("#left-mapcard")
@@ -21,10 +22,23 @@ export function drawDeathCircles(mapName) {
     if (mapName == "de_cache") {
       const pos = [];
       for (let i = 0; i < data.length; i++) {
-        pos[i] = [
-          CalculatePointToResolutionXCache(data[i].vic_pos_x),
-          CalculatePointToResolutionYCache(data[i].vic_pos_y),
-        ];
+        if(filterCT && data[i].vic_side == 'CounterTerrorist'){
+          pos[i] = [
+            CalculatePointToResolutionXCache(data[i].vic_pos_x),
+            CalculatePointToResolutionYCache(data[i].vic_pos_y),
+          ];
+        }else if(filterTR && data[i].vic_side == 'Terrorist'){
+          pos[i] = [
+            CalculatePointToResolutionXCache(data[i].vic_pos_x),
+            CalculatePointToResolutionYCache(data[i].vic_pos_y),
+          ];
+        }else if(filterTR == false && filterCT == false){
+          pos[i] = [
+            CalculatePointToResolutionXCache(data[i].vic_pos_x),
+            CalculatePointToResolutionYCache(data[i].vic_pos_y),
+          ];
+        }
+        
       }
       const clusters = kMeans(pos, 35);
       drawClusters(clusters, sampleSVG);
@@ -51,7 +65,9 @@ export function drawDeathCircles(mapName) {
 
       drawClusters(clusters, sampleSVG);
     }
+    loading[0].style.display = "none";
   });
+  
 }
 
 function normalizeClusterArray(arr) {
