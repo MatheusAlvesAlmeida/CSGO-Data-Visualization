@@ -10,6 +10,7 @@ import {
 var currentMap = "";
 
 const leftMapcard = document.getElementById("left-mapcard");
+const rightMapCard = document.getElementById("right-mapcard");
 
 const loading = document.getElementsByClassName("loader");
 const externalContainer = document.getElementsByClassName("external-container");
@@ -94,6 +95,11 @@ teamTRButton.addEventListener("click", async () => {
   await getByTR(currentMap);
 });
 
+const compareButton = document.getElementById("compare-button");
+compareButton.addEventListener("click", async () => {
+  compare();
+});
+
 async function draw(map) {
   await getSVGNormal(map);
 }
@@ -116,4 +122,14 @@ async function getByCT(map) {
 
 async function getByTR(map) {
   await getSVGTR(map);
+}
+
+function compare() {
+  document.getElementById("lado2").textContent = document.getElementById("lado1").textContent;
+  document.getElementById("lado1").textContent = 'Lado 1';
+  rightMapCard.innerHTML = '';
+  rightMapCard.style.backgroundImage = "url('./../assets/maps/" + currentMap + ".png')";
+  rightMapCard.innerHTML = leftMapcard.innerHTML;
+  leftMapcard.innerHTML = '';
+  leftMapcard.style = 'none'
 }

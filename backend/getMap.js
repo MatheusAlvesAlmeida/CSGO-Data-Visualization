@@ -81,7 +81,6 @@ function normalizeClusterArray(arr) {
 
 function drawClusters(clusters, sampleSVG) {
   const normalizedArray = normalizeClusterArray(clusters.classes);
-  console.log(normalizedArray);
   for (let i = 0; i < clusters.centroids.length; i++) {
     sampleSVG
       .append("circle")

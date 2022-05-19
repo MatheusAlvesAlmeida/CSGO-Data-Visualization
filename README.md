@@ -14,6 +14,12 @@ Com isso, o objetivo desse projeto é analisar a performance de jogadores do mod
 - Qual o lado mais favorável em cada mapa?
 - Em que posição posso impactar o jogo mais efetitvamente?
 
+## 💻 Data Visualization
+
+<h1 align="center">
+    <img src=".github/cs-data-vis.png">
+</h1>
+
 ### Autores
 [Matheus Alves Almeida](https://github.com/MatheusAlvesAlmeida),
 [Gabriel Nogueira Leite](https://github.com/gabrielnogueiralt) e
