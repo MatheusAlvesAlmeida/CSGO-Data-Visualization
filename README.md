@@ -19,7 +19,7 @@ Com isso, o objetivo desse projeto é analisar a performance de jogadores do mod
 ## 💻 Data Visualization
 
 <h1 align="center">
-    <img src=".github/cs-data-vis.png">
+    <img src="https://raw.githubusercontent.com/MatheusAlvesAlmeida/CSGO-Data-Visualization/master/assets/demo.png">
 </h1>
 
 ### Autores
